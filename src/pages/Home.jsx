@@ -3,6 +3,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { productsAction } from "../redux/actions/products"
+import ProductCard from "../components/ProductCard"
 
 export default function Home() {
 
@@ -15,10 +16,14 @@ export default function Home() {
   }, [dispatch])
 
   console.log(products)
-
-
   return (
-    <div>Home</div>
+    <div className="flex flex-wrap justify-center">
+      {
+        products.map((product , id) => (
+          <ProductCard key={id} product={product} />
+        ))
+      }
+    </div>
   )
 
 }
